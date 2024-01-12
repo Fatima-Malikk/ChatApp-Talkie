@@ -1,19 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from "axios";
 
 const ChatPage = () => {
 
-    const fetchChats = async() => {
-        const data = await axios.get("/api/chat");
-        console.log(data);
-    }
+  const [chats, setChats] = useState([]);
+
+    // const fetchChats = async() => {
+    //     const data = await axios.get("/api/chat");
+    //     setChats(data);
+  // }
+  const fetchChats = async () => {
+  try {
+    const response = await axios.get("/api/chat");
+    setChats(response.data); // Assuming 'data' is the array of chats in the response
+  } catch (error) {
+    console.error("Error fetching chats:", error);
+  }
+};
+
 
     useEffect(() => {
         fetchChats()
         }, []);
     
   return (
-    <div>ChatPage</div>
+    <div>{chats.map((chat) => (
+      <div key={chat._id}> {chat.chatName}</div>
+        
+   ) )}</div>
   )
 }
 
