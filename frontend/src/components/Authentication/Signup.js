@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/button";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
-import { useToast } from "@chakra-ui/toast";
+import { useToast } from "@chakra-ui/toast";// wo neeche jo popup atta hai wo hta hai toast
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
@@ -100,9 +100,9 @@ const Signup = () => {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "chat-app");
-      data.append("cloud_name", "piyushproj");
-      fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
+      data.append("upload_preset", "Talkiee");
+      data.append("cloud_name", "dlxektatv");
+      fetch("https://api.cloudinary.com/v1_1/dlxektatv/image/upload", {
         method: "post",
         body: data,
       })
